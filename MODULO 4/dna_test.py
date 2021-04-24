@@ -64,15 +64,35 @@ def patron_large(n:int):
                     name = "No match"
             return name
 def definir_patron():
-    n=int(input('Secuencia: '))
+    d=str(input('database:'))
     while True:
-        if n>0 and n<5:
-            return patron_small(n)
-        elif n >4 and n<21:
-            return patron_large(n)
+        if d=='small.csv':
+            while True:
+                n=input('Secuencia: ')
+                x=re.findall(r'\d+',n)
+                num=int(x[0])
+                if num>0 and num<5:
+                    return patron_small(num)
+                else:
+                    print('Secuencia no correcta')
+                    n=input('Secuencia: ')
+                    x=re.findall(r'\d+',n)
+                    num=int(x[0])
+        elif d=='large.csv':
+            while True:
+                n=input('Secuencia: ')
+                x=re.findall(r'\d+',n)
+                num=int(x[0])
+                if num >4 and num<21:
+                    return patron_large(num)
+                else:
+                    print('Secuencia no correcta')
+                    n=input('Secuencia: ')
+                    x=re.findall(r'\d+',n)
+                    num=int(x[0])
         else:
-            print('Secuencia no correcta')
-            n=int(input('Secuencia: '))
+            print('database incorrecta')
+            d=str(input('database: '))
 
 if __name__ == "__main__":           
     print(definir_patron())
